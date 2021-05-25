@@ -73,21 +73,8 @@ const postFetch = (
   })
     .then((response) => response.json())
     .then((recipe) => {
-      const recipeData = recipe.data.attributes;
-
-      const recipeMarkup = `
-      <div data-id=${recipe.id}>
-        <img src=${recipeData.image_url} height="200" width="250">
-        <h3>${recipeData.title}</h3>
-        <p>${recipeData.ingredients}</p>
-        <p>${recipeData.instructions}</p>
-        <p>${recipeData.category.name}</p>
-        <button data-id={recipe.id}>edit</button>
-      </div>
-      <br>
-      <br>
-      `;
-      document.querySelector("#recipe-container").innerHTML += recipeMarkup;
+      const recipeData = recipe.data;
+      render(recipeData);
     })
-    .then(err, console.log("err"), "error!!!!");
+    .catch((err) => console.log(err, "this is an error!!!"));
 };
