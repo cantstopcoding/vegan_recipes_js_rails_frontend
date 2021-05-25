@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   getRecipes();
+
+  const createRecipeForm = document.querySelector("#create-recipe-form");
+
+  createRecipeForm.addEventListener("submit", (e) => createRecipeHandler(e));
 });
 
 const getRecipes = () => {
@@ -24,4 +28,16 @@ const getRecipes = () => {
       });
     })
     .catch((err) => console.log(err, "this is an error!!!"));
+};
+
+const createRecipeHandler = (e) => {
+  e.preventDefault();
+  debugger;
+  const inputData = document.querySelector("#input-title").value;
+  const inputUrl = document.querySelector("#input-url").value;
+  const inputInstructions = document.querySelector("#input-instructions").value;
+  const inputIngredients = document.querySelector("#input-ingredients").value;
+  const categoryId = parseInt(document.querySelector("#categories").value);
+
+  // console.log(e);
 };
