@@ -8,6 +8,60 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="form-container">
+      <form id="create-recipe-form">
+        <h3>Create a Recipe</h3>
+
+        <input
+          id="input-title"
+          type="text"
+          value=""
+          placeholder="Enter recipe name..."
+          class="input-text"
+        />
+        <br /><br />
+        <input
+          id="input-url"
+          type="text"
+          name="image"
+          value=""
+          placeholder="Enter recipe image URL"
+        />
+        <br /><br />
+        <textarea
+          id="input-ingredients"
+          name="ingredients"
+          rows="8"
+          cols="80"
+          placeholder="Enter recipe ingredients..."
+        ></textarea>
+        <br /><br />
+        <textarea
+          id="input-instructions"
+          name="instructions"
+          rows="8"
+          cols="80"
+          placeholder="Enter recipe instructions..."
+        ></textarea>
+        <br /><br />
+        <p>Choose a Category</p>
+        <select>
+          <option value="1">Mediterranean</option>
+          <option value="2">Gluten Free</option>
+          <option value="3">Dessert</option>
+        </select>
+        <br /><br />
+        <input
+          id="create-button"
+          type="submit"
+          name="submit"
+          value="Create New Recipe"
+          class="submit"
+        />
+      </form>
+      <br /><br />
+    </div>
+
     <div id="recipe-container"></div>
   </body>
 </html>
