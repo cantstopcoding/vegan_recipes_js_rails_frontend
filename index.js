@@ -74,7 +74,7 @@ const postFetch = (
     .then((response) => response.json())
     .then((recipe) => {
       if (Array.isArray(recipe)) {
-        document.querySelector("#errors").innerHTML += recipe.join(", ");
+        alert(recipe.join(", "));
       } else {
         const recipeData = recipe.data;
         render(recipeData);
