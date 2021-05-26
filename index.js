@@ -73,8 +73,14 @@ const postFetch = (
   })
     .then((response) => response.json())
     .then((recipe) => {
-      const recipeData = recipe.data;
-      render(recipeData);
+      if (Array.isArray(recipe)) {
+        document.querySelector("#errors").innerHTML += recipe.join(", ");
+      } else {
+        const recipeData = recipe.data;
+        render(recipeData);
+      }
     })
-    .catch((err) => console.log(err, "this is an error!!!"));
+    .catch((err) => {
+      console.log(err, "this is an error!!!");
+    });
 };
