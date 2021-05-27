@@ -11,27 +11,12 @@ const getRecipes = () => {
     .then((response) => response.json())
     .then((recipes) => {
       recipes.data.forEach((recipe) => {
-        render(recipe);
+        let newRecipe = new Recipe(recipe, recipe.attributes);
+        document.querySelector("#recipe-container").innerHTML +=
+          newRecipe.renderRecipeCard();
       });
     })
     .catch((err) => console.log(err, "this is an error!!!"));
-};
-
-const render = (recipe) => {
-  const recipeMarkup = `
-            <div data-id=${recipe.id}>
-                <img src=${recipe.attributes.image_url} height="200" width="250">
-                <h3>${recipe.attributes.title}</h3>
-                <p>${recipe.attributes.ingredients}</p>
-                <p>${recipe.attributes.instructions}</p>
-                <p>${recipe.attributes.category.name}</p>
-                <button data-id={recipe.id}>edit</button>
-            </div>
-            <br>
-            <br>
-        `;
-
-  document.querySelector("#recipe-container").innerHTML += recipeMarkup;
 };
 
 const createRecipeHandler = (e) => {
@@ -76,8 +61,13 @@ const postFetch = (
       if (Array.isArray(recipe)) {
         alert(recipe.join(", "));
       } else {
+        console.log(recipe);
         const recipeData = recipe.data;
-        render(recipeData);
+
+        newRecipe = new Recipe(recipeData, recipeData.attributes);
+
+        document.querySelector("#recipe-container").innerHTML +=
+          newRecipe.renderRecipeCard();
       }
     })
     .catch((err) => {
