@@ -11,6 +11,7 @@ const getRecipes = () => {
     .then((response) => response.json())
     .then((recipes) => {
       recipes.data.forEach((recipe) => {
+        let newRecipe = new Recipe(recipe.id, recipe.attributes);
         render(recipe);
       });
     })
